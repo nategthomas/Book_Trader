@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5 ">
+			<img src={{book.image}} class="img-responsive center-block">
+		</div>
+    <div class="col-xs-7 ">
+			<b>Title:</b> {{book.title}}<br>
+      <b>Book Owner:</b> {{book.owner}} <br>
+			<br>
+			<button type="button" class="btn btn-danger" (click)="onCancel()">Cancel Request</button>
+		</div>
+  </div>
+</div>

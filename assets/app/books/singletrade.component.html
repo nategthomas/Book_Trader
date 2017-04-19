@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 ">
+			<img src={{book.image}} class="img-responsive center-block">
+		</div>
+    <div class="col-xs-9 ">
+			<b>Title:</b> {{book.title}}<br>
+			<b>Description:</b> {{book.description}} <br>
+      <b>Book Owner:</b> {{book.owner}} <br>
+			<b>Author:</b><div>{{book.author}}</div>
+			<br>
+			<button type="button" class="btn btn-info" (click)="onSend()" (click)="onRequest($event.target, 'Request sent and added to request list')">Request Book</button>
+		</div>
+  </div>
+</div>

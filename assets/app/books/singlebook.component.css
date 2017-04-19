@@ -1,0 +1,20 @@
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: default;
+}
+.book-entry {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+  width: 128px;
+  margin: 16px;
+}
+.book-package {
+  cursor: pointer;
+}
+.book-title {
+  font-size: large;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
