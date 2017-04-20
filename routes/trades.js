@@ -41,6 +41,12 @@ router.post('/:id', function(req, res, next) {
           error: err
         })
       }
+      if (decoded.user._id == book.user) {
+        return res.status(500).json({
+          title: 'Users cannot request their own book',
+          error: err
+        })
+      }
       var trade = new Trade({
         sender: user,
         receiver: book.user,
@@ -294,7 +300,7 @@ router.patch('/:id', function(req, res, next) {
         }
         sendingUser.sentRequests.pull(trade);
         sendingUser.books.push(trade.book);
-        trade.remove();
+
         sendingUser.save(function(err, result) {
           if (err) {
             return res.status(500).json({
@@ -302,15 +308,38 @@ router.patch('/:id', function(req, res, next) {
               error: err
             })
           }
-          res.status(200).json({
-            title: 'request rejected',
-            message: result
           })
+        Book.findById(trade.book, function(err, book) {
+          if (err) {
+            return res.status(500).json({
+              title: 'failed to find book',
+              error: err
+            })
+          }
+          book.user = sendingUser._id;
+          book.save();
+        })
+        trade.remove();
         })
       })
     })
   })
-})
 
+
+router.get('/address/:id', function(req, res, next) {
+  var decoded = jwt.decode(req.query.token);
+  User.findById(req.params.id, function(err, user) {
+    if (err) {
+      return res.status(500).json({
+        title: 'failed to find user',
+        error: err
+      })
+    }
+    res.status(200).json({
+      title: 'requester address found',
+      obj: user
+    })
+  })
+})
 
 module.exports = router;

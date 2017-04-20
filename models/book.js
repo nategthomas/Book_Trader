@@ -12,11 +12,6 @@ var schema = new Schema({
   user: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
-schema.post('remove', function(book) {
-  User.findById(book.user, function(err, user) {
-    user.books.pull(book);
-    user.save();
-  })
-})
+
 
 module.exports = mongoose.model('Book', schema);

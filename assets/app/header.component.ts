@@ -6,7 +6,7 @@ import {AuthService} from "./auth/auth.service";
 @Component({
   selector: 'app-header',
   template: `
-
+    <div *ngIf="isDataAvailable">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -20,10 +20,12 @@ import {AuthService} from "./auth/auth.service";
           </ul>
           <ul class="nav navbar-nav navbar-right navig">
           <li routerLinkActive="active"  *ngIf="!isLoggedIn()"><a [routerLink]="['/auth']">Authentication</a></li>
+          <li routerLinkActive="active"  *ngIf="isLoggedIn()" ><a [routerLink]="['/address']">Address</a></li>
           <li routerLinkActive = "active" *ngIf="isLoggedIn()" ><a id="logout" (click)="onLogout()">Logout {{user}}</a></li>
           </ul>
         </div>
       </nav>
+    </div>
   `,
   styles: [`
     .brander {
@@ -40,9 +42,19 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   private user: string = '';
+  isDataAvailable:boolean = false;
+
+  getUser() {
+    return localStorage.getItem("userName");
+
+  }
 
   ngOnInit() {
-    this.user = localStorage.getItem("userName");
+    if (this.getUser()) {
+      this.isDataAvailable = true;
+      this.user = this.getUser();
+    }
+
   }
 
 

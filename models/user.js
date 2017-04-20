@@ -13,7 +13,14 @@ var schema = new Schema({
   password: {type: String, required: true},
   books: [{type: Schema.Types.ObjectId, ref: 'Book'}],
   sentRequests: [{type: Schema.Types.ObjectId, ref: 'Trade'}],
-  receivedRequests: [{type: Schema.Types.ObjectId, ref: 'Trade'}]
+  receivedRequests: [{type: Schema.Types.ObjectId, ref: 'Trade'}],
+  address1: {type: String},
+  address2: {type: String},
+  city: {type: String},
+  state: {type: String},
+  zip: {type: String},
+  country: {type: String}
+
 });
 
 schema.plugin(uniqueValidator);

@@ -10,7 +10,6 @@ import {BookComponent} from "./books/book.component"
 import {routing} from "./app.routing";
 import {SignupComponent} from "./auth/signup.component";
 import {SigninComponent} from "./auth/signin.component";
-import {LogoutComponent} from "./auth/logout.component";
 import {AuthService} from "./auth/auth.service";
 import {BookService} from "./books/book.service";
 import {TradeService} from "./trades/trade.service";
@@ -21,6 +20,7 @@ import {SingleTrade}  from "./books/singletrade.component";
 import {MyTradesComponent} from "./trades/mytrades.component";
 import {Sent} from "./trades/sent.component";
 import {Received} from "./trades/received.component";
+import {AddressComponent} from "./auth/address.component";
 
 
 @NgModule({
@@ -31,14 +31,14 @@ import {Received} from "./trades/received.component";
         BookComponent,
         SignupComponent,
         SigninComponent,
-        LogoutComponent,
         SingleBook,
         MyBooksComponent,
         BrowseBooksComponent,
         SingleTrade,
         MyTradesComponent,
         Sent,
-        Received
+        Received,
+        AddressComponent
     ],
     imports: [
       BrowserModule,

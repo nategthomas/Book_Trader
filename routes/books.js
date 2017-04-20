@@ -56,6 +56,16 @@ router.delete('/:id', function(req, res, next) {
         message: 'This user is not authenticated'
       })
     }
+    User.findById(book.user, function(err, user) {
+      if (err) {
+        return res.status(500).json({
+          title: 'An error occured',
+          error: err
+        })
+      }
+      user.books.pull(book);
+      user.save();
+    })
     book.remove(function(err, result) {
       if (err) {
         return res.status(500).json({

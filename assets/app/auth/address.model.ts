@@ -1,8 +1,5 @@
-export class User {
-  constructor(public email: string,
-              public password: string,
-              public firstName?: string,
-              public lastName?: string,
+export class Address {
+  constructor(
               public address1?: string,
               public address2?: string,
               public city?: string,

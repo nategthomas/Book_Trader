@@ -6,8 +6,7 @@ import {AUTH_ROUTES} from "./auth/auth.routing";
 import {MyBooksComponent} from "./books/mybooks.component";
 import {BrowseBooksComponent} from "./books/browsebooks.component";
 import {MyTradesComponent} from "./trades/mytrades.component";
-import {LogoutComponent} from "./auth/logout.component";
-
+import {AddressComponent} from "./auth/address.component";
 
 const APP_ROUTES: Routes = [
   {path: '', redirectTo: '/book', pathMatch: 'full'},
@@ -16,7 +15,7 @@ const APP_ROUTES: Routes = [
   {path: 'mybooks', component: MyBooksComponent},
   {path: 'mytrades', component: MyTradesComponent},
   {path: 'auth', component: AuthComponent, children: AUTH_ROUTES},
-  {path: 'logout', component: LogoutComponent}
+  {path: 'address', component: AddressComponent}
 ]
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

@@ -7,6 +7,8 @@ import {Observable} from "rxjs";
 import 'rxjs/add/observable/throw';
 
 import {Book} from "../books/book.model";
+import {Address} from "../auth/address.model";
+
 
 @Injectable()
 export class TradeService {
@@ -111,6 +113,26 @@ export class TradeService {
         }
       this.receivedBooks = receivedRequests;
       return receivedRequests;
+      })
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  getRequesterAddress(book: Book) {
+    const token = localStorage.getItem('token')
+    ? '?token=' + localStorage.getItem('token')
+    : ''
+    return this.http.get('http://localhost:3000/trades/address/' + book.requesterId + token)
+      .map((response: Response) => {
+        var add = response.json().obj;
+        var address = new Address(add.address1,
+                                  add.address2,
+                                  add.city,
+                                  add.state,
+                                  add.zip,
+                                  add.country
+        );
+        console.log(address)
+        return address;
       })
       .catch((error: Response) => Observable.throw(error.json()));
   }

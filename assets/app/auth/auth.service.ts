@@ -4,12 +4,30 @@ import 'rxjs/Rx';
 import {Observable} from "rxjs";
 
 import {User} from "./user.model";
+import {Address} from "./address.model";
 
 
 @Injectable()
 export class AuthService {
   constructor(private http: Http) {}
 
+  enterAddress(address: Address) {
+    const body = JSON.stringify(address);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const token = localStorage.getItem('token')
+    ? '?token=' + localStorage.getItem('token')
+    : '';
+    return this.http.post('http://localhost:3000/user/address' + token, body, {headers: headers})
+      .map((response: Response) => {
+        address = response.json();
+        console.log(address)
+      })
+      .catch((error: Response) =>  Observable.throw(error.json()));
+  }
+
+getUserName() {
+  localStorage.getItem('userName');
+}
 
 signUp(user: User) {
   const body = JSON.stringify(user);

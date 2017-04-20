@@ -12,3 +12,24 @@
 		</div>
   </div>
 </div>
+
+<div class='backdrop' [ngStyle]="{'display': display}"></div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="closeWindow()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >Address Information:</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{requester?.address1}} {{requester?.address2}}</p>
+        <p>{{requester?.city}}, {{requester?.state}} {{requester?.zip}}</p>
+        <p>{{requester?.country}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onSendBook()">Okay</button>
+        <button type="button" class="btn btn-default" (click)="closeWindow()">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

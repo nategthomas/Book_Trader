@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import {Book} from "../books/book.model";
 import {TradeService} from "./trade.service";
+import {Address} from "../auth/address.model";
 
 
 @Component({
@@ -25,11 +26,14 @@ import {TradeService} from "./trade.service";
 
 export class Received implements OnInit {
   @Input() book: Book;
+  requester: Address;
+  display = 'none';
 
   constructor(private tradeService: TradeService){}
 
   ngOnInit() {
     console.log(this.book);
+
   }
 
   onReject() {
@@ -39,9 +43,23 @@ export class Received implements OnInit {
   }
 
   onAccept() {
+
+    this.tradeService.getRequesterAddress(this.book).subscribe(
+      (data: Address) => this.requester = data,
+      error => console.error(error)
+    )
+    this.display = "block";
+
+  }
+
+  onSendBook() {
     this.tradeService.acceptRequest(this.book).subscribe(
       data => console.log(data)
     )
+  }
+
+  closeWindow() {
+    this.display = 'none';
   }
 
 }
