@@ -6,7 +6,6 @@ import {AuthService} from "./auth/auth.service";
 @Component({
   selector: 'app-header',
   template: `
-    <div *ngIf="isDataAvailable">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -25,7 +24,6 @@ import {AuthService} from "./auth/auth.service";
           </ul>
         </div>
       </nav>
-    </div>
   `,
   styles: [`
     .brander {
@@ -50,12 +48,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.getUser()) {
-      this.isDataAvailable = true;
-      this.user = this.getUser();
+  this.user = this.getUser();
     }
-
-  }
 
 
   onLogout() {
