@@ -11,5 +11,6 @@ var schema = new Schema({
   book: {type: Schema.Types.ObjectId, ref: 'Book'}
 });
 
+schema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Trade', schema);
