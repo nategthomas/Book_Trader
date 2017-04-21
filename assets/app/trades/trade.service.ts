@@ -24,7 +24,7 @@ export class TradeService {
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : ''
-    return this.http.patch('http://localhost:3000/trades/' + book.tradeId + token, body, {headers: headers})
+    return this.http.patch('https://bookstrade.herokuapp.com/trades/' + book.tradeId + token, body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -34,7 +34,7 @@ export class TradeService {
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : ''
-    return this.http.delete('http://localhost:3000/trades/' + book.tradeId + token)
+    return this.http.delete('https://bookstrade.herokuapp.com/trades/' + book.tradeId + token)
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -44,7 +44,7 @@ export class TradeService {
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : ''
-    return this.http.delete('http://localhost:3000/trades/reject/' + book.tradeId + token)
+    return this.http.delete('https://bookstrade.herokuapp.com/trades/reject/' + book.tradeId + token)
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -55,7 +55,7 @@ export class TradeService {
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : ''
-    return this.http.post('http://localhost:3000/trades/' + book.bookId + token, body, {headers: headers})
+    return this.http.post('https://bookstrade.herokuapp.com/trades/' + book.bookId + token, body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -64,7 +64,7 @@ export class TradeService {
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : ''
-    return this.http.get('http://localhost:3000/trades' + token)
+    return this.http.get('https://bookstrade.herokuapp.com/trades' + token)
       .map((response: Response) => {
         var requests = response.json().obj;
         var sentRequests: Book[] = [];
@@ -93,7 +93,7 @@ export class TradeService {
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : ''
-    return this.http.get('http://localhost:3000/trades/received' + token)
+    return this.http.get('https://bookstrade.herokuapp.com/trades/received' + token)
       .map((response: Response) => {
         var trades = response.json().obj;
         var receivedRequests: Book[] = [];
@@ -121,7 +121,7 @@ export class TradeService {
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : ''
-    return this.http.get('http://localhost:3000/trades/address/' + book.requesterId + token)
+    return this.http.get('https://bookstrade.herokuapp.com/trades/address/' + book.requesterId + token)
       .map((response: Response) => {
         var add = response.json().obj;
         var address = new Address(add.address1,

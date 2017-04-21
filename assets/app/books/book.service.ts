@@ -23,13 +23,13 @@ private books: Book[] = [];
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : '';
-    return this.http.delete('http://localhost:3000/books/' + book.bookId + token)
+    return this.http.delete('https://bookstrade.herokuapp.com/books/' + book.bookId + token)
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
   getAllBooks() {
-    return this.http.get('http://localhost:3000/books')
+    return this.http.get('https://bookstrade.herokuapp.com/books')
       .map((response: Response) => {
         const books = response.json().obj;
         let browseBooks: Book[] = [];
@@ -54,7 +54,7 @@ private books: Book[] = [];
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : '';
-    return this.http.get('http://localhost:3000/books/mybooks' + token)
+    return this.http.get('https://bookstrade.herokuapp.com/books/mybooks' + token)
       .map((response: Response) => {
         const books = response.json().obj;
         let transformedBooks: Book[] = [];
@@ -82,7 +82,7 @@ private books: Book[] = [];
     const token = localStorage.getItem('token')
     ? '?token=' + localStorage.getItem('token')
     : '';
-    return this.http.post('http://localhost:3000/books' + token, body, {headers: headers})
+    return this.http.post('https://bookstrade.herokuapp.com/books' + token, body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
