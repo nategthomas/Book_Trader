@@ -22,6 +22,7 @@ onSubmit() {
     this.myForm.value.firstName,
     this.myForm.value.lastName
   )
+  console.log(user);
   this.authService.signUp(user)
     .subscribe(
       data => console.log(data),

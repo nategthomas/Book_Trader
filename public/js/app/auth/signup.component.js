@@ -8,6 +8,7 @@ export var SignupComponent = (function () {
     }
     SignupComponent.prototype.onSubmit = function () {
         var user = new User(this.myForm.value.email, this.myForm.value.password, this.myForm.value.firstName, this.myForm.value.lastName);
+        console.log(user);
         this.authService.signUp(user)
             .subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
         this.myForm.reset();

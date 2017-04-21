@@ -31,7 +31,7 @@ getUserName() {
 
 signUp(user: User) {
   const body = JSON.stringify(user);
-  const headers = new Headers({'Content-Type': 'application/json'});
+  const headers = new Headers({'Content-Type': 'text/plain'});
   return this.http.post('https://bookstrade.herokuapp.com/user', body, {headers: headers})
     .map((response: Response) => response.json())
     .catch((error: Response) =>  Observable.throw(error.json()));

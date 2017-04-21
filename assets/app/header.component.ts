@@ -33,6 +33,9 @@ import {AuthService} from "./auth/auth.service";
     .navig {
       font-size: 1.3em;
     }
+    #logout {
+      cursor: pointer;
+    }
   `]
 })
 

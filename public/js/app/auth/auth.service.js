@@ -24,7 +24,7 @@ export var AuthService = (function () {
     };
     AuthService.prototype.signUp = function (user) {
         var body = JSON.stringify(user);
-        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var headers = new Headers({ 'Content-Type': 'text/plain' });
         return this.http.post('https://bookstrade.herokuapp.com/user', body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) { return Observable.throw(error.json()); });

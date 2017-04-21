@@ -65,7 +65,7 @@ function viewFactory_HeaderComponent_Host0(viewUtils, parentInjector, declaratio
     return new _View_HeaderComponent_Host0(viewUtils, parentInjector, declarationEl);
 }
 export var HeaderComponentNgFactory = new import11.ComponentFactory('app-header', viewFactory_HeaderComponent_Host0, import3.HeaderComponent);
-var styles_HeaderComponent = ['.brander[_ngcontent-%COMP%] {\n      font-size: 1.4em;\n      margin-right: 20px;\n    }\n    .navig[_ngcontent-%COMP%] {\n      font-size: 1.3em;\n    }'];
+var styles_HeaderComponent = ['.brander[_ngcontent-%COMP%] {\n      font-size: 1.4em;\n      margin-right: 20px;\n    }\n    .navig[_ngcontent-%COMP%] {\n      font-size: 1.3em;\n    }\n    #logout[_ngcontent-%COMP%] {\n      cursor: pointer;\n    }'];
 var renderType_HeaderComponent = null;
 var _View_HeaderComponent0 = (function (_super) {
     __extends(_View_HeaderComponent0, _super);
