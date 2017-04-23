@@ -40,18 +40,21 @@ import {AuthService} from "./auth/auth.service";
 })
 
 export class HeaderComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
-
   private user: string = '';
-  isDataAvailable:boolean = false;
 
   getUser() {
     return localStorage.getItem("userName");
-
   }
 
+  constructor(private authService: AuthService, private router: Router) {
+    setTimeout(() => {
+      this.user = this.getUser();
+    }, 2000);
+  }
+
+
+
   ngOnInit() {
-  this.user = this.getUser();
     }
 
 
