@@ -17,6 +17,7 @@ export var HeaderComponent = (function () {
     HeaderComponent.prototype.ngOnInit = function () {
     };
     HeaderComponent.prototype.onLogout = function () {
+        this.user = '';
         this.authService.logout();
         this.router.navigate(['/auth', 'signin']);
     };
