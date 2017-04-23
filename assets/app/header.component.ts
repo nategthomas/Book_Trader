@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {
     setTimeout(() => {
       this.user = this.getUser();
-    }, 2000);
+    }, 4000);
   }
 
 
