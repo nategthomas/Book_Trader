@@ -47,14 +47,15 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(private authService: AuthService, private router: Router) {
-    setTimeout(() => {
-      this.user = this.getUser();
-    }, 3000);
+
   }
 
 
 
   ngOnInit() {
+    setTimeout(() => {
+      this.user = this.getUser();
+    }, 3000);
     }
 
 

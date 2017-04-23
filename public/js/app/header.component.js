@@ -3,18 +3,18 @@ import { Router } from "@angular/router";
 import { AuthService } from "./auth/auth.service";
 export var HeaderComponent = (function () {
     function HeaderComponent(authService, router) {
-        var _this = this;
         this.authService = authService;
         this.router = router;
         this.user = '';
-        setTimeout(function () {
-            _this.user = _this.getUser();
-        }, 3000);
     }
     HeaderComponent.prototype.getUser = function () {
         return localStorage.getItem("userName");
     };
     HeaderComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.user = _this.getUser();
+        }, 3000);
     };
     HeaderComponent.prototype.onLogout = function () {
         this.user = '';
