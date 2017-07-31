@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {Router} from "@angular/router";
 
 import {AuthService} from "./auth/auth.service";
@@ -39,7 +39,7 @@ import {AuthService} from "./auth/auth.service";
   `]
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   private user: string = '';
 
   getUser() {
@@ -50,14 +50,15 @@ export class HeaderComponent implements OnInit {
 
   }
 
-
-
   ngOnInit() {
     setTimeout(() => {
       this.user = this.getUser();
     }, 3000);
     }
 
+  ngAfterViewInit() {
+    console.log(this.user);
+  }
 
   onLogout() {
     this.user = '';
