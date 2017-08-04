@@ -1,4 +1,4 @@
-# Book_Trader
+# Book Trader
 
 An app that lets users post and trade their books.
 
